@@ -10,14 +10,14 @@ fork from https://github.com/Jessidhia/go-ed2k
 
 ## how to use
 
-`.\go-ed2ksum.exe go-ed2ksum.exe` outputs the  `3220ca970de224c869073272cd44040f  go-ed2ksum.exe`
+`.\ed2ksum.exe ed2ksum.exe` outputs the  `3220ca970de224c869073272cd44040f  ed2ksum.exe`
 
 
-`.\go-ed2ksum.exe -uri go-ed2ksum.exe` outputs the  `ed2k://|file|go-ed2ksum.exe|707584|3220ca970de224c869073272cd44040f|/`
+`.\ed2ksum.exe -uri ed2ksum.exe` outputs the  `ed2k://|file|ed2ksum.exe|707584|3220ca970de224c869073272cd44040f|/`
 
 
 ## check ed2ksum
 
-`./go-ed2ksum.exe  ./go-ed2ksum.exe > checksum.txt` 
+`./ed2ksum.exe  ./ed2ksum.exe > checksum.txt` 
 
-` ./go-ed2ksum.exe  -c checksum.txt ` outputs the `./go-ed2ksum.exe: OK`
+` ./ed2ksum.exe  -c checksum.txt ` outputs the `./ed2ksum.exe: OK`
