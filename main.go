@@ -1,12 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -72,31 +72,12 @@ func makeDigest(paths ...string) (digest string) {
 	return strings.Join(lines, "\n")
 }
 
-func SplitLines(s string) []string {
-	var lines []string
-	sc := bufio.NewScanner(strings.NewReader(s))
-	for sc.Scan() {
-		lines = append(lines, sc.Text())
-	}
-	return lines
-}
+var digestRegex = regexp.MustCompile(`(?P<hash>[0-9A-Fa-f]{32}) (?P<mode>[ *])(?P<path>[^\n]+)`)
 
 func checkDigest(digest string) int {
 	errCount := 0
-	digestLine := SplitLines(digest)
-	for _, match := range digestLine {
-		if len(match) < 35 {
-			break
-		}
-		baseHash := match[0:32]
-		modeStr := match[33:34]
-		path := strings.TrimSpace(match[34:])
-		path = strings.Replace(path, "\n", "", -1)
-		path = strings.Replace(path, "\r", "", -1)
-
-		if len(path)%2 == 1 {
-			path = path[0 : len(path)-1]
-		}
+	for _, match := range digestRegex.FindAllStringSubmatch(digest, -1) {
+		baseHash, modeStr, path := match[1], match[2], match[3]
 
 		mode := false
 		if modeStr == "*" {
