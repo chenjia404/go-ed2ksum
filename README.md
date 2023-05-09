@@ -1,3 +1,5 @@
+[English](./README.md) | [简体中文](./README.zh-CN.md) 
+
 ### Go library to calculate ed2k hashes
 
 
