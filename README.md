@@ -21,3 +21,5 @@ fork from https://github.com/Jessidhia/go-ed2k
 `./ed2ksum.exe  ./ed2ksum.exe > checksum.txt` 
 
 ` ./ed2ksum.exe  -c checksum.txt ` outputs the `./ed2ksum.exe: OK`
+
+Don't use powershell, it uses utf-16 encoding
